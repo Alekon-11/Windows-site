@@ -3,8 +3,6 @@ const tabs = (parentSelector, tabSelector, contentSelector, activeClass) => {
     let tabs = document.querySelectorAll(tabSelector);
     let content = document.querySelectorAll(contentSelector);
 
-    console.log(content);
-
     function hideTabContent() {
         tabs.forEach(item => item.classList.remove(activeClass));
         content.forEach(item => item.style.display = 'none');
@@ -13,8 +11,6 @@ const tabs = (parentSelector, tabSelector, contentSelector, activeClass) => {
     function showTabContent(i = 0) {
         tabs[i].classList.add(activeClass);
         content[i].style.display = 'block';
-        console.log(tabs[i]);
-        console.log(content[i]);
     }
 
     parent.addEventListener('click', (e) => {
