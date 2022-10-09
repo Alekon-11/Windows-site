@@ -14886,6 +14886,7 @@ window.addEventListener('DOMContentLoaded', function (e) {
   Object(_modules_modals__WEBPACK_IMPORTED_MODULE_1__["default"])();
   Object(_modules_tabs__WEBPACK_IMPORTED_MODULE_2__["default"])('.glazing_slider', '.glazing_block', '.glazing_content', 'active');
   Object(_modules_tabs__WEBPACK_IMPORTED_MODULE_2__["default"])('.decoration_slider', '.no_click', '.decoration__item', 'after_click');
+  console.log('fff');
 });
 
 /***/ }),
@@ -14987,6 +14988,7 @@ var tabs = function tabs(parentSelector, tabSelector, contentSelector, activeCla
   });
   hideTabContent();
   showTabContent();
+  console.log('fff');
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (tabs);

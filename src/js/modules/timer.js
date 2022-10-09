@@ -1,6 +1,4 @@
-const timer = () => {
-    const endtime = '2022-11-11';
-    
+const timer = (timerSelector,endtime) => {
     function getTimeRemaining(deadline) {
         const time = Date.parse(deadline) - Date.parse(new Date()),
               days = Math.floor(time / (1000 * 60 * 60 * 24)),
@@ -17,12 +15,6 @@ const timer = () => {
         };
     }
 
-    const day = document.querySelector('#days');
-    const hour = document.querySelector('#hours');
-    const minute = document.querySelector('#minutes');
-    const second = document.querySelector('#seconds');
-    const intId = setInterval(setClock, 1000);
-
     function setZero(num) {
         if(num && num >= 10){
             return num;
@@ -30,27 +22,36 @@ const timer = () => {
         return `0${num}`;
     }
 
-    function setClock() {
-        const {time, days, hours, minutes, seconds} = getTimeRemaining(endtime);
+    function setClock(timerSelector, endtime){
+        const timer = document.querySelector(timerSelector);
+        const day = timer.querySelector('#days');
+        const hour = timer.querySelector('#hours');
+        const minute = timer.querySelector('#minutes');
+        const second = timer.querySelector('#seconds');
+        const intId = setInterval(updateClock, 1000);
 
-        if(time <= 0){
-            clearInterval(intId);
+        function updateClock() {
+            const {time, days, hours, minutes, seconds} = getTimeRemaining(endtime);
 
-            day.textContent = '00';
-            hour.textContent = '00';
-            minute.textContent = '00';
-            second.textContent = '00';
+            if(time <= 0){
+                clearInterval(intId);
 
-            return;
+                day.textContent = '00';
+                hour.textContent = '00';
+                minute.textContent = '00';
+                second.textContent = '00';
+                return;
+            }
+
+            day.textContent = setZero(days);
+            hour.textContent = setZero(hours);
+            minute.textContent = setZero(minutes);
+            second.textContent = setZero(seconds);
         }
-
-        day.textContent = setZero(days);
-        hour.textContent = setZero(hours);
-        minute.textContent = setZero(minutes);
-        second.textContent = setZero(seconds);
+        updateClock();
     }
     
-    setClock();
+    setClock(timerSelector, endtime);
     
 };
 
