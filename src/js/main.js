@@ -5,6 +5,7 @@ import tabs from './modules/tabs';
 import timer from './modules/timer';
 import forms from './modules/forms';
 import changeModalState from './modules/changeModalState';
+import images from './modules/images';
 
 window.addEventListener('DOMContentLoaded', (e) => {
     e.preventDefault();
@@ -18,4 +19,5 @@ window.addEventListener('DOMContentLoaded', (e) => {
     tabs('.decoration_slider', '.no_click', '.decoration__item', 'after_click');
     tabs('.balcon_icons', '.balcon_icons_img', '.big_img > img', 'do_image_more', 'inline');
     forms(modalState);
+    images();
 });

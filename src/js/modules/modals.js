@@ -14,7 +14,7 @@ const modals = () => {
                 if(e.target){
                     e.preventDefault();
                 }
-
+            
                 closeWindows();
     
                 modal.style.display = 'block';
