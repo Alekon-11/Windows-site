@@ -1095,6 +1095,15 @@ textarea:focus {
   padding: 1rem 5rem;
 }
 
+.fade{
+  animation: fadePopup .5s linear forwards;
+}
+
+@keyframes fadePopup {
+    0%{ opacity: 0}
+    100%{ opacity: 1}
+}
+
 /*Media*/
 @media (max-width: 1400px) {
   .main {

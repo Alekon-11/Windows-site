@@ -7,6 +7,7 @@ const modals = () => {
         function closeWindows() {
             modals.forEach(item => item.style.display = 'none');
             document.body.classList.remove('modal-open');
+            document.body.style.marginRight = '';
         }
 
         trigger.forEach(item => {
@@ -19,6 +20,7 @@ const modals = () => {
     
                 modal.style.display = 'block';
                 document.body.classList.add('modal-open');
+                document.body.style.marginRight = `${calcScroll()}px`;
             });
         });
 
@@ -36,6 +38,18 @@ const modals = () => {
             document.querySelector(selector).style.display = 'block';
             document.body.classList.add('modal-open');
         }, time);
+    }
+
+    function calcScroll() {
+        let div = document.createElement('div');
+        div.style.overflowY = 'scroll';
+        div.style.width = '50px';
+        div.style.height = '50px';
+
+        document.body.append(div);
+        const scrollWidth =  div.offsetWidth - div.clientWidth;
+        div.remove();
+        return scrollWidth;
     }
 
     bindModal('.popup_engineer_btn', '.popup_engineer', '.popup_close');

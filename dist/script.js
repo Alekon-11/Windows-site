@@ -18170,6 +18170,7 @@ var modals = function modals() {
         return item.style.display = 'none';
       });
       document.body.classList.remove('modal-open');
+      document.body.style.marginRight = '';
     }
 
     trigger.forEach(function (item) {
@@ -18181,6 +18182,7 @@ var modals = function modals() {
         closeWindows();
         modal.style.display = 'block';
         document.body.classList.add('modal-open');
+        document.body.style.marginRight = "".concat(calcScroll(), "px");
       });
     });
     modal.addEventListener('click', function (e) {
@@ -18195,6 +18197,17 @@ var modals = function modals() {
       document.querySelector(selector).style.display = 'block';
       document.body.classList.add('modal-open');
     }, time);
+  }
+
+  function calcScroll() {
+    var div = document.createElement('div');
+    div.style.overflowY = 'scroll';
+    div.style.width = '50px';
+    div.style.height = '50px';
+    document.body.append(div);
+    var scrollWidth = div.offsetWidth - div.clientWidth;
+    div.remove();
+    return scrollWidth;
   }
 
   bindModal('.popup_engineer_btn', '.popup_engineer', '.popup_close');
